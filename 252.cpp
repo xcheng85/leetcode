@@ -4,15 +4,40 @@ For example,
 Given [[0, 30],[5, 10],[15, 20]],
 return false. */
 
-class Solution {
-public:
-    bool canAttendMeetings(vector<Interval>& intervals) {
-        sort(intervals.begin(), intervals.end(), [](const Interval &a, const Interval &b){return a.start < b.start;});
-        for (int i = 1; i < intervals.size(); ++i) {
-            if (intervals[i].start < intervals[i - 1].end) {
-                return false;
-            }
+class Solution
+{
+  public:
+    int minMeetingRooms(vector<Interval> &intervals)
+    {
+        sort(intervals.begin(), intervals.end(), [](const Interval &a, const Interval &b) { return a.start < b.start; });
+        priority_queue<int, vector<int>, greater<int>> min_heap;
+        for (auto interval : intervals)
+        {
+            if (!min_heap.empty() && min_heap.top() <= interval.start)
+                min_heap.pop();
+            min_heap.push(interval.end);
         }
-        return true;
+
+        return min_heap.size();
     }
 };
+
+
+int minMeetingRooms(vector<Interval>& intervals) {
+    vector<int> starts, ends;
+    for (auto i : intervals) {
+        starts.push_back(i.start);
+        ends.push_back(i.end);
+    }
+    sort(begin(starts), end(starts));
+    sort(begin(ends), end(ends));
+    int e = 0, rooms = 0, available = 0;
+    for (int start : starts) {
+        while (ends[e] <= start) {
+            ++e;
+            ++available;
+        }
+        available ? --available : ++rooms;
+    }
+    return rooms;
+}
