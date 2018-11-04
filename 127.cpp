@@ -3,13 +3,13 @@ class Solution
   public:
     int ladderLength(string beginWord, string endWord, vector<string> &wordList)
     {
-
         queue<string> bfs;
         unordered_set<string> cache(wordList.begin(), wordList.end());
 
-        helper(beginWord, endWord, cache, bfs);
-        int dist = 2;
-        while (bfs.empty() == false)
+        int dist = 1;
+        bfs.push(beginWord);
+
+        while (!bfs.empty())
         {
             int num = bfs.size();
             for (int i = 0; i < num; i++)
@@ -18,27 +18,23 @@ class Solution
                 bfs.pop();
                 if (current == endWord)
                     return dist;
-                helper(current, endWord, cache, bfs);
+
+                cache.erase(current);
+                for (int c = 0; c < current.size(); c++)
+                {
+                    for (int a = 0; a < 26; a++)
+                    {
+                        string tmp = current;
+                        tmp[c] = 'a' + a;
+                        if (cache.find(tmp) != cache.end())
+                        {
+                            bfs.push(tmp);
+                        }
+                    }
+                }
             }
             dist++;
         }
         return 0;
-    }
-
-    void helper(string currentWord, string endWord, unordered_set<string> &wordListCache, queue<string> &bfs)
-    {
-        wordListCache.erase(currentWord);
-        for (int i = 0; i < currentWord.size(); i++)
-        {
-            for (int j = 0; j < 26; j++)
-            {
-                string tmp = currentWord;
-                tmp[i] = 'a' + j;
-                if (wordListCache.find(tmp) != wordListCache.end())
-                {
-                    bfs.push(tmp);
-                }
-            }
-        }
     }
 };
