@@ -24,6 +24,9 @@ class Solution
     }
 };
 
+
+// dp 
+// calculate every vertical 
 public:
 int trap(vector<int> &height)
 {
