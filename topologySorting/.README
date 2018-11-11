@@ -1,0 +1,19 @@
+Degree0
+Degree1
+Degree2
+.
+.
+.
+
+difference with DFS
+
+Not unique
+
+applications: scheduling jobs and make file dependencies
+
+Two Algorithms: 
+1. dfs + stack
+2. bfs(Kahn's topology sorting)
+
+207. Course Schedule(bfs)
+210. Course Schedule ii
