@@ -14,5 +14,11 @@ height = log(2, n)
 
 lazy propagation
 
+o(n) space extra
+o(n) build 
+o(logn) query
+
+Product of given Range Modulo m
+
 
 

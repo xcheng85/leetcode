@@ -68,12 +68,12 @@ class Solution
             return prefixQuery(qs, qe, arrayStart, mid, 2 * currentIdx + 1);
 
         if (qs > mid)
-            return prefixQuery(qs, qe, mid, arrayEnd, 2 * currentIdx + 2);
+            return prefixQuery(qs, qe, mid + 1, arrayEnd, 2 * currentIdx + 2);
 
         // If a part of this segment overlaps with
         // the given range
         Node left = prefixQuery(qs, qe, arrayStart, mid, 2 * currentIdx + 1);
-        Node right = prefixQuery(qs, qe, mid, arrayEnd, 2 * currentIdx + 2);
+        Node right = prefixQuery(qs, qe, mid + 1, arrayEnd, 2 * currentIdx + 2);
 
         // adds the sum of the left and right
         // segment
