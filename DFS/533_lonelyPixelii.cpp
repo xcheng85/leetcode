@@ -1,6 +1,7 @@
 class Solution
 {
   public:
+    
     // row has N black pixels
     int findBlackPixel(vector<vector<char>> &picture, int N)
     {
@@ -28,10 +29,9 @@ class Solution
         // Get an iterator pointing to begining of map
         std::unordered_map<std::string, int>::iterator it = cache.begin();
 
-        // Iterate over the map using iterator
+        // Iterate over the map using iterator 
         while (it != cache.end())
         {
-
             if (it->second == N)
             {
                 for (int j = 0; j < n; j++)
@@ -49,6 +49,7 @@ class Solution
     }
 
   private:
+
     string scanRow(vector<vector<char>> &picture, int row, int target, vector<int> &colCount)
     {
         int n = picture[0].size();
@@ -71,4 +72,5 @@ class Solution
             return s;
         return "";
     }
+
 };
