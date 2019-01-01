@@ -1,0 +1,33 @@
+/* Possible followup: Why would you use BFS over DFS in this solution (except that DFS takes longer here)?
+Ans: If input is too large, DFS might cause stack overflow.
+
+BFS:
+General Idea of BFS is that we need to use a queue to record which rooms / nodes / blocks that we want to visit in the future, usually we use an unordered_set to record the places that we have visited, so that we don't visit them anymore.
+First we want to push the starting point to the queue, we use a while (!queue.empty()) to make sure there are still work to do. Take the front element from queue, pop queue, then do what you gotta do, for instance insert it into visited, do some calculation, return something if this guy met certain conditions, blah blah. Then we get its neighbors, push them to the queue.
+In general, we want to expand one step at a time.
+
+DFS:
+The general idea of DFS is that we recursively call itself with changing parameters. When we enter DFS, we normally want to check if certain conditions are met, for instance we want to visit all nodes: we first check if our unordered_set visited.size() is the same as node size. If so, return true. We also want to check if current DFS is viable, like is i or j out of boundary? If they are, you should return / return false.
+Then for each possible ways to go, we try DFS on them: go left, go right, go up, go down, you name it! So unlike BFS, DFS is more like going to one direction straight, if it works that's great, if it doesn't, we come back to the previous recursive call and try another way.
+ */
+
+class Solution
+{
+  public:
+    bool canVisitAllRooms(vector<vector<int>> &rooms)
+    {
+        unordered_set<int> visited;
+        queue<int> to_visit;
+        to_visit.push(0);
+        while (!to_visit.empty())
+        {
+            int curr = to_visit.front();
+            to_visit.pop();
+            visited.insert(curr);
+            for (int k : rooms[curr])
+                if (visited.find(k) == visited.end())
+                    to_visit.push(k);
+        }
+        return visited.size() == rooms.size();
+    }
+};
