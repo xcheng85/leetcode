@@ -1,10 +1,38 @@
-Memcache and redis
+Application Server Cache 
+a. request layer node 
+b. local storage of response data 
+c. cache miss if multiple instances behind load-balancer
 
+Distributed Cache
+all nodes have one cache. And each node owns piece of instances
+
+Global Cache, redis
+
+CDN (static media)
 
 cache invalidation 
+Write-through cache: Service needs an extra write to cache. Increase latency
+
+Write-around cache: current viz-3d-service
+
+Write-back cache: Service write data to cache first, and write to permanant sorage after while. Risk to lose data
+
+Cache eviction policies
+
+FIFO
+LIFO
+LRU
+MRU
+LFU
+RR
+
+
+Memcache and redis
 
 Message queues
 
 Cron jobs
 
 Platform layer
+
+
