@@ -1,0 +1,8 @@
+1. Load Balancer
+2. Scatter and Gather: Search Engine
+3. Result Cache (add memcache to 2)
+4. Shared Space
+5. Pipe and Filter
+6. Map Reduce (Hadoop) distributed disk i/o
+7.Bulk Synchronous Parellel
+8.Execution Orchestrator

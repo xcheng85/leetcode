@@ -1,0 +1,34 @@
+Image Hosting
+
+1. write slow. (maintain the connection)
+2. read faster with many opt methods. (compress, chunk)
+
+apache maxmum connection 500. 
+
+Separate into 2 services
+optimize independently. (queue request, cache)
+
+Redunduncy to handle server failure
+
+Partitions(shards_), large data
+1. scale vertically: adding more resource on individual server
+2. scale horizontally: more nodes 
+3. criteria to partition {
+    data locality; 
+    race condition
+}
+
+cache: in the request node(mem-cache)
+global cache: 
+distributed cache: (hash function)
+
+Memcache o(1)
+
+Not in cache? 
+
+Proxy (Squid and Varnish )
+collapsed forwarding. Multiple same requests and 
+
+Task Queue
+
+There are quite a few open source queues like RabbitMQ, ActiveMQ, BeanstalkD, but some also use services like Zookeeper, or even data stores like Redis.

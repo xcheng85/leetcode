@@ -1,0 +1,10 @@
+Memcache and redis
+
+
+cache invalidation 
+
+Message queues
+
+Cron jobs
+
+Platform layer
